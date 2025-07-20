@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generator Kodów QR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; gap: 8px;">
+      <button id="toggle-theme" type="button" style="font-size:1rem; padding:8px 16px; border-radius:8px; border:none; background:var(--button-bg); color:#fff; cursor:pointer;">☾ Tryb jasny</button>
+      <select id="lang-switch" style="font-size:1rem; padding:8px 12px; border-radius:8px; border:2px solid var(--input-border); background:var(--input-bg); color:var(--input-color);">
+        <option value="en">EN</option>
+        <option value="pl">PL</option>
+      </select>
+    </div>
+    <h1 id="title">QR Code Generator</h1>
+    <form id="qr-form">
+      <input type="text" id="qr-input" placeholder="Enter text or URL" autocomplete="off" required>
+      <select id="qr-style">
+        <option value="classic">Classic (black & white)</option>
+        <option value="rounded">Rounded</option>
+        <option value="dots">Dots</option>
+        <option value="classy">Classy</option>
+        <option value="classy-rounded">Classy Rounded</option>
+        <option value="extra-rounded">Extra Rounded</option>
+        <option value="extra-dots">Extra Dots</option>
+      </select>
+      <button type="submit" id="generate-btn">Generate</button>
+      <button id="download-btn" type="button">Download as PNG</button>
+    </form>
+    <div id="extra-options" style="margin-bottom: 18px;">
+      <button id="toggle-customize" type="button" style="width:100%;font-size:1.02rem;padding:10px 0;border-radius:8px;border:none;background:var(--button-bg);color:#fff;cursor:pointer;letter-spacing:0.5px;">Additional options ▼</button>
+      <div id="customize-section" style="display:none;flex-direction:column;gap:10px;align-items:stretch;margin-top:10px;">
+        <label id="label-bg" style="display:flex;align-items:center;gap:8px;justify-content:space-between;">QR background color: <input type="color" id="color-bg" value="#ffffff"></label>
+        <label id="label-dots" style="display:flex;align-items:center;gap:8px;justify-content:space-between;">Dots color: <input type="color" id="color-dots" value="#000000"></label>
+        <label id="label-corners" style="display:flex;align-items:center;gap:8px;justify-content:space-between;">Corners color: <input type="color" id="color-corners" value="#000000"></label>
+        <label id="label-size" style="display:flex;align-items:center;gap:8px;justify-content:space-between;">QR size: <select id="qr-size" class="custom-select"><option value="180">Small</option><option value="220" selected>Medium</option><option value="300">Large</option></select></label>
+        <label id="label-ec" style="display:flex;align-items:center;gap:8px;justify-content:space-between;">Error correction: <select id="qr-ec" class="custom-select"><option value="L">L (7%)</option><option value="M">M (15%)</option><option value="Q">Q (25%)</option><option value="H">H (30%)</option></select></label>
+      </div>
+    </div>
+    <div id="qr-result" class="qr-result">
+      <div id="qr-canvas"></div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
